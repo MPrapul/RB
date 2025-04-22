@@ -8,10 +8,13 @@ const nextConfig = {
       'i.imgur.com',
       'cdn.sanity.io'
     ],
-    unoptimized: true
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
+    ],
   },
-  output: 'export',
-  trailingSlash: true,
 };
 
 module.exports = nextConfig; 
