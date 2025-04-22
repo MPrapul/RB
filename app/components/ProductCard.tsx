@@ -33,6 +33,9 @@ const ProductCard = ({ product }: { product: Product }) => {
     setQuantity(1); // Reset quantity after adding to cart
   };
 
+  const rating = product.rating || 0;
+  const reviewCount = product.reviewCount || 0;
+
   return (
     <div className="card group h-full flex flex-col overflow-hidden">
       {/* Product Image */}
@@ -89,7 +92,7 @@ const ProductCard = ({ product }: { product: Product }) => {
             </div>
             
             {/* Rating */}
-            {product.rating && (
+            {rating > 0 && (
               <div className="flex items-center mt-1">
                 <div className="flex">
                   {[...Array(5)].map((_, i) => (
@@ -97,10 +100,10 @@ const ProductCard = ({ product }: { product: Product }) => {
                       key={i}
                       xmlns="http://www.w3.org/2000/svg"
                       className={`h-4 w-4 ${
-                        i < Math.floor(product.rating) 
-                          ? 'text-accent' 
-                          : i < product.rating 
-                            ? 'text-accent/50' 
+                        i < Math.floor(rating)
+                          ? 'text-accent'
+                          : i < rating
+                            ? 'text-accent/50'
                             : 'text-gray-300'
                       }`}
                       viewBox="0 0 20 20"
@@ -111,7 +114,7 @@ const ProductCard = ({ product }: { product: Product }) => {
                   ))}
                 </div>
                 <span className="text-xs text-gray-500 ml-1">
-                  ({product.reviewCount})
+                  ({reviewCount})
                 </span>
               </div>
             )}
