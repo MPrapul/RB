@@ -8,7 +8,10 @@ const nextConfig = {
       'i.imgur.com',
       'cdn.sanity.io'
     ],
+    unoptimized: true
   },
+  output: 'export',
+  trailingSlash: true,
 };
 
 module.exports = nextConfig; 
