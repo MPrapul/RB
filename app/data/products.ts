@@ -1,195 +1,209 @@
-import { Product } from '@/types';
+import { Product, Category } from '@/types';
 
+// Sample products data
 export const products: Product[] = [
-  // Bags & Backpacks
   {
-    id: 'premium-laptop-backpack',
-    name: 'Premium Laptop Backpack',
-    description: 'Professional laptop backpack with multiple compartments and USB charging port.',
-    price: 2499,
-    comparePrice: 2999,
-    images: ['https://images.unsplash.com/photo-1622560480605-d83c853bc5c3'],
-    category: 'bags',
-    tags: ['laptop bag', 'business', 'travel'],
-    features: ['USB charging port', 'Water resistant', '15.6" laptop compartment'],
-    inStock: true,
-    rating: 4.8,
-    reviewCount: 125,
-    brandId: 'wildcraft',
-    isBestseller: true,
-  },
-  {
-    id: 'executive-messenger',
-    name: 'Executive Messenger Bag',
-    description: 'Sleek and professional messenger bag perfect for daily office use.',
-    price: 1999,
-    images: ['https://images.unsplash.com/photo-1546938576-6e6a64f317cc'],
-    category: 'bags',
-    tags: ['messenger', 'office', 'professional'],
-    features: ['Genuine leather', 'Multiple pockets', 'Adjustable strap'],
-    inStock: true,
-    rating: 4.6,
-    reviewCount: 89,
-    brandId: 'hidesign',
-  },
-
-  // Apparel
-  {
-    id: 'premium-polo',
-    name: 'Premium Cotton Polo',
-    description: 'High-quality cotton polo with custom embroidery options.',
-    price: 899,
-    comparePrice: 1199,
-    images: ['https://images.unsplash.com/photo-1581655353564-df123a1eb820'],
-    category: 'apparel',
-    tags: ['polo', 'cotton', 'custom'],
-    features: ['100% cotton', 'Custom embroidery', 'Multiple colors'],
-    inStock: true,
-    rating: 4.7,
-    reviewCount: 156,
-    brandId: 'jack-jones',
-    isBestseller: true,
-  },
-  {
-    id: 'fleece-jacket',
-    name: 'Corporate Fleece Jacket',
-    description: 'Warm and comfortable fleece jacket with company logo options.',
-    price: 1499,
-    images: ['https://images.unsplash.com/photo-1591047139829-d91aecb6caea'],
-    category: 'apparel',
-    tags: ['jacket', 'fleece', 'winter'],
-    features: ['High-quality fleece', 'Custom logo', 'Multiple sizes'],
-    inStock: true,
-    rating: 4.5,
-    reviewCount: 78,
-    brandId: 'puma',
-  },
-
-  // Drinkware
-  {
-    id: 'insulated-tumbler',
-    name: 'Premium Insulated Tumbler',
-    description: 'Double-wall vacuum insulated tumbler for hot and cold beverages.',
-    price: 799,
-    comparePrice: 999,
-    images: ['https://images.unsplash.com/photo-1602143407151-7111542de6e8'],
-    category: 'drinkware',
-    tags: ['tumbler', 'insulated', 'travel'],
-    features: ['24-hour cold', '12-hour hot', 'Leak-proof'],
-    inStock: true,
-    rating: 4.9,
-    reviewCount: 234,
-    brandId: 'milton',
-    isBestseller: true,
-  },
-  {
-    id: 'ceramic-mug-set',
-    name: 'Custom Ceramic Mug Set',
-    description: 'Set of high-quality ceramic mugs with custom printing options.',
-    price: 599,
-    images: ['https://images.unsplash.com/photo-1514228742587-6b1558fcca3d'],
-    category: 'drinkware',
-    tags: ['mug', 'ceramic', 'set'],
-    features: ['Microwave safe', 'Dishwasher safe', 'Custom printing'],
-    inStock: true,
-    rating: 4.6,
-    reviewCount: 167,
-    brandId: 'clay-craft',
-  },
-
-  // Electronics
-  {
-    id: 'wireless-earbuds',
-    name: 'Premium Wireless Earbuds',
-    description: 'High-quality wireless earbuds with charging case.',
+    id: 'premium-gift-box-1',
+    name: 'Premium Gift Box',
+    description: 'Luxurious gift box with assorted premium items',
     price: 2999,
     comparePrice: 3499,
-    images: ['https://images.unsplash.com/photo-1606220838315-056192d5e927'],
-    category: 'electronics',
-    tags: ['earbuds', 'wireless', 'audio'],
-    features: ['Active noise cancellation', 'Long battery life', 'Touch controls'],
+    images: ['/images/products/gift-box-1.jpg'],
+    category: 'luxury-boxes',
+    tags: ['premium', 'corporate', 'gift-box'],
+    features: ['Handcrafted', 'Premium Quality', 'Customizable'],
     inStock: true,
     rating: 4.8,
-    reviewCount: 312,
-    brandId: 'boat',
+    reviewCount: 24,
+    brandId: 'rb-brand',
     isBestseller: true,
+    isNew: false,
+    image: '/images/products/gift-box-1.jpg'
   },
   {
-    id: 'power-bank',
-    name: '20000mAh Power Bank',
-    description: 'High-capacity power bank with fast charging support.',
-    price: 1499,
-    images: ['https://images.unsplash.com/photo-1609592424857-84268e989f11'],
-    category: 'electronics',
-    tags: ['power bank', 'charging', 'portable'],
-    features: ['20000mAh capacity', 'Fast charging', 'Multiple ports'],
+    id: 'corporate-gift-hamper',
+    name: 'Corporate Gift Hamper',
+    description: 'Elegant gift hamper perfect for corporate gifting',
+    price: 4999,
+    comparePrice: 5999,
+    images: ['/images/products/gift-hamper-1.jpg'],
+    category: 'hampers',
+    tags: ['corporate', 'hamper', 'premium'],
+    features: ['Custom Branding', 'Handpicked Items', 'Premium Packaging'],
     inStock: true,
     rating: 4.7,
-    reviewCount: 245,
-    brandId: 'mi',
+    reviewCount: 18,
+    brandId: 'rb-brand',
+    isBestseller: true,
+    isNew: false,
+    image: '/images/products/gift-hamper-1.jpg'
   },
-
-  // Eco-Friendly
   {
-    id: 'bamboo-set',
-    name: 'Bamboo Desk Set',
-    description: 'Eco-friendly bamboo desk organizer set.',
+    id: 'leather-notebook-set',
+    name: 'Premium Leather Notebook Set',
+    description: 'Genuine leather notebook with matching pen',
     price: 1299,
     comparePrice: 1599,
-    images: ['https://images.unsplash.com/photo-1584589167171-541ce45f1eea'],
-    category: 'eco-friendly',
-    tags: ['bamboo', 'desk', 'organizer'],
-    features: ['Sustainable bamboo', 'Multiple compartments', 'Natural finish'],
+    images: ['/images/products/notebook-1.jpg'],
+    category: 'stationery',
+    tags: ['stationery', 'corporate', 'leather'],
+    features: ['Genuine Leather', 'Refillable', 'Custom Embossing Available'],
     inStock: true,
     rating: 4.6,
-    reviewCount: 89,
-    brandId: 'eco-store',
+    reviewCount: 32,
+    brandId: 'rb-brand',
+    isBestseller: false,
     isNew: true,
+    image: '/images/products/notebook-1.jpg'
   },
   {
-    id: 'jute-bag',
-    name: 'Premium Jute Tote',
-    description: 'Stylish and eco-friendly jute tote bag.',
-    price: 499,
-    images: ['https://images.unsplash.com/photo-1591561954557-26941169b49e'],
-    category: 'eco-friendly',
-    tags: ['jute', 'tote', 'eco-friendly'],
-    features: ['100% natural jute', 'Durable handles', 'Custom printing'],
+    id: 'premium-tea-set',
+    name: 'Premium Tea Set',
+    description: 'Elegant tea set with assorted premium teas',
+    price: 1899,
+    comparePrice: undefined,
+    images: ['/images/products/tea-set-1.jpg'],
+    category: 'wellness',
+    tags: ['wellness', 'tea', 'premium'],
+    features: ['Organic Teas', 'Handcrafted Packaging', 'Assorted Flavors'],
+    inStock: true,
+    rating: 4.9,
+    reviewCount: 15,
+    brandId: 'rb-brand',
+    isBestseller: true,
+    isNew: false,
+    image: '/images/products/tea-set-1.jpg'
+  },
+  {
+    id: 'tech-gift-box',
+    name: 'Tech Gift Box',
+    description: 'Modern gift box with tech accessories',
+    price: 3499,
+    comparePrice: 3999,
+    images: ['/images/products/tech-box-1.jpg'],
+    category: 'tech',
+    tags: ['tech', 'gadgets', 'modern'],
+    features: ['Premium Tech Accessories', 'Wireless Earbuds', 'Power Bank'],
     inStock: true,
     rating: 4.5,
-    reviewCount: 156,
-    brandId: 'eco-store',
-  },
-
-  // Stationery
-  {
-    id: 'premium-notebook',
-    name: 'Premium Leather Notebook',
-    description: 'High-quality leather-bound notebook with custom debossing.',
-    price: 899,
-    comparePrice: 1099,
-    images: ['https://images.unsplash.com/photo-1544816155-12df9643f363'],
-    category: 'stationery',
-    tags: ['notebook', 'leather', 'premium'],
-    features: ['Genuine leather', 'Custom debossing', 'Premium paper'],
-    inStock: true,
-    rating: 4.8,
-    reviewCount: 198,
-    brandId: 'moleskine',
-    isBestseller: true,
+    reviewCount: 22,
+    brandId: 'rb-brand',
+    isBestseller: false,
+    isNew: true,
+    image: '/images/products/tech-box-1.jpg'
   },
   {
-    id: 'pen-set',
-    name: 'Executive Pen Set',
-    description: 'Premium metal pen set with custom engraving options.',
-    price: 1499,
-    images: ['https://images.unsplash.com/photo-1583485088034-697b5bc54ccd'],
-    category: 'stationery',
-    tags: ['pen', 'metal', 'gift'],
-    features: ['Metal construction', 'Custom engraving', 'Premium case'],
+    id: 'custom-gift-box',
+    name: 'Custom Gift Box',
+    description: 'Fully customizable gift box with your choice of items',
+    price: 2499,
+    comparePrice: undefined,
+    images: ['/images/products/custom-box-1.jpg'],
+    category: 'luxury-boxes',
+    tags: ['custom', 'personalized', 'gift-box'],
+    features: ['Fully Customizable', 'Premium Packaging', 'Personalized Card'],
     inStock: true,
     rating: 4.7,
-    reviewCount: 145,
-    brandId: 'cross',
+    reviewCount: 19,
+    brandId: 'rb-brand',
+    isBestseller: false,
+    isNew: true,
+    image: '/images/products/custom-box-1.jpg'
+  }
+];
+
+// Sample categories data
+export const categories: Category[] = [
+  {
+    id: 'luxury-boxes',
+    name: 'Luxury Gift Boxes',
+    description: 'Premium curated gift boxes for special occasions and corporate events',
+    imageUrl: '/images/categories/luxury-boxes.jpg',
+    link: '/categories#luxury-boxes',
+    productCount: 8,
+    products: [
+      {
+        id: 'premium-gift-box-1',
+        name: 'Premium Gift Box',
+        price: 2999,
+        image: '/images/products/gift-box-1.jpg',
+        description: 'Luxurious gift box with assorted premium items'
+      },
+      {
+        id: 'custom-gift-box',
+        name: 'Custom Gift Box',
+        price: 2499,
+        image: '/images/products/custom-box-1.jpg',
+        description: 'Fully customizable gift box with your choice of items'
+      }
+    ]
   },
+  {
+    id: 'hampers',
+    name: 'Gift Hampers',
+    description: 'Elegant gift hampers with carefully selected premium products',
+    imageUrl: '/images/categories/hampers.jpg',
+    link: '/categories#hampers',
+    productCount: 6,
+    products: [
+      {
+        id: 'corporate-gift-hamper',
+        name: 'Corporate Gift Hamper',
+        price: 4999,
+        image: '/images/products/gift-hamper-1.jpg',
+        description: 'Elegant gift hamper perfect for corporate gifting'
+      }
+    ]
+  },
+  {
+    id: 'stationery',
+    name: 'Premium Stationery',
+    description: 'High-quality stationery items perfect for corporate gifting',
+    imageUrl: '/images/categories/stationery.jpg',
+    link: '/categories#stationery',
+    productCount: 12,
+    products: [
+      {
+        id: 'leather-notebook-set',
+        name: 'Premium Leather Notebook Set',
+        price: 1299,
+        image: '/images/products/notebook-1.jpg',
+        description: 'Genuine leather notebook with matching pen'
+      }
+    ]
+  },
+  {
+    id: 'tech',
+    name: 'Tech Gifts',
+    description: 'Modern technology gifts and accessories for the tech enthusiast',
+    imageUrl: '/images/categories/tech.jpg',
+    link: '/categories#tech',
+    productCount: 9,
+    products: [
+      {
+        id: 'tech-gift-box',
+        name: 'Tech Gift Box',
+        price: 3499,
+        image: '/images/products/tech-box-1.jpg',
+        description: 'Modern gift box with tech accessories'
+      }
+    ]
+  },
+  {
+    id: 'wellness',
+    name: 'Wellness Gifts',
+    description: 'Self-care and wellness products to promote health and relaxation',
+    imageUrl: '/images/categories/wellness.jpg',
+    link: '/categories#wellness',
+    productCount: 7,
+    products: [
+      {
+        id: 'premium-tea-set',
+        name: 'Premium Tea Set',
+        price: 1899,
+        image: '/images/products/tea-set-1.jpg',
+        description: 'Elegant tea set with assorted premium teas'
+      }
+    ]
+  }
 ]; 

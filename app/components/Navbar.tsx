@@ -3,11 +3,12 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useCart } from '@/context/CartContext';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [itemCount, setItemCount] = useState(0);
+  const { itemCount } = useCart();
 
   useEffect(() => {
     const handleScroll = () => {

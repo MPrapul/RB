@@ -3,6 +3,9 @@ import type { Metadata } from 'next';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import { CartProvider } from './context/CartContext';
+import { Inter } from 'next/font/google';
+
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'RB Gifting Solutions | Premium Corporate & Personal Gifts',
@@ -17,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className="min-h-screen flex flex-col">
+      <body className={inter.className}>
         <CartProvider>
           <Navbar />
           <main className="flex-grow">{children}</main>

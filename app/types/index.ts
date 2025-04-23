@@ -9,11 +9,12 @@ export interface Product {
   tags: string[];
   features: string[];
   inStock: boolean;
-  rating?: number;
-  reviewCount?: number;
+  rating: number;
+  reviewCount: number;
   brandId: string;
   isBestseller?: boolean;
   isNew?: boolean;
+  image?: string; // For backward compatibility
 }
 
 export interface Brand {
@@ -34,6 +35,13 @@ export interface Category {
   imageUrl: string;
   link: string;
   productCount: number;
+  products: Array<{
+    id: string;
+    name: string;
+    price: number;
+    image: string;
+    description: string;
+  }>;
 }
 
 export interface ComboKit {

@@ -1,89 +1,92 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
-
-interface Category {
-  id: string;
-  name: string;
-  imageUrl: string;
-  link: string;
-}
-
-const categories: Category[] = [
-  {
-    id: 'bags',
-    name: 'Bags & Backpacks',
-    imageUrl: 'https://images.unsplash.com/photo-1547949003-9792a18a2601?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-    link: '/categories/bags',
-  },
-  {
-    id: 'apparel',
-    name: 'T-Shirts & Apparel',
-    imageUrl: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80',
-    link: '/categories/apparel',
-  },
-  {
-    id: 'drinkware',
-    name: 'Mugs & Bottles',
-    imageUrl: 'https://images.unsplash.com/photo-1587398099807-eb15fb9dbeb9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-    link: '/categories/drinkware',
-  },
-  {
-    id: 'electronics',
-    name: 'Electronics',
-    imageUrl: 'https://images.unsplash.com/photo-1550009158-9ebf69173e03?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1401&q=80',
-    link: '/categories/electronics',
-  },
-  {
-    id: 'eco-friendly',
-    name: 'Eco-Friendly',
-    imageUrl: 'https://images.unsplash.com/photo-1584680226833-322d19be42a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-    link: '/categories/eco-friendly',
-  },
-  {
-    id: 'stationery',
-    name: 'Stationery',
-    imageUrl: 'https://images.unsplash.com/photo-1568205612837-017257d2310a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-    link: '/categories/stationery',
-  },
-];
+import { categories } from '../data/products';
+import { motion } from 'framer-motion';
 
 const CategorySection = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0
+    }
+  };
+
   return (
-    <section className="section bg-white">
-      <div className="container">
-        <div className="text-center mb-12">
-          <h2 className="text-primary mb-4">Shop by Category</h2>
-          <p className="text-gray-600 max-w-3xl mx-auto">
-            Browse through our wide range of premium gifting options categorized for your convenience. 
+    <section className="py-24 bg-white dark:bg-gray-900">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold mb-6 text-primary">
+            Shop by Category
+          </h2>
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            Browse through our wide range of premium gifting options categorized for your convenience.
             Find the perfect gift for every occasion.
           </p>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
           {categories.map((category) => (
-            <Link href={category.link} key={category.id} className="group">
-              <div className="relative h-64 rounded-lg overflow-hidden shadow-md transition-transform duration-300 group-hover:shadow-xl group-hover:-translate-y-1">
-                <Image
-                  src={category.imageUrl}
-                  alt={category.name}
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
-                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent"></div>
-                <div className="absolute bottom-0 left-0 w-full p-6">
-                  <h3 className="text-xl font-bold text-white">{category.name}</h3>
-                  <p className="text-white/90 text-sm mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    View all products &rarr;
-                  </p>
+            <motion.div
+              key={category.id}
+              variants={itemVariants}
+              className="transform hover:scale-105 transition-transform duration-300"
+            >
+              <Link href={`/categories#${category.id}`} className="group block h-full">
+                <div className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
+                  <div className="relative h-60 overflow-hidden">
+                    {/* Use a placeholder image since we don't have actual category images */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-primary/30 to-primary/50 z-10"></div>
+                    <Image
+                      src={category.products[0]?.image || 'https://via.placeholder.com/300'}
+                      alt={category.name}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                  </div>
+                  
+                  <div className="p-6 flex flex-col flex-grow">
+                    <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white group-hover:text-primary dark:group-hover:text-primary transition-colors">
+                      {category.name}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-300 mb-6 flex-grow">
+                      {category.description}
+                    </p>
+                    <div className="flex items-center text-primary dark:text-primary font-medium">
+                      <span>Browse {category.products.length} products</span>
+                      <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                      </svg>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </Link>
+              </Link>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
         
-        <div className="text-center mt-10">
-          <Link href="/categories" className="btn btn-primary">
+        <div className="text-center mt-12">
+          <Link 
+            href="/categories" 
+            className="btn btn-primary"
+          >
             View All Categories
           </Link>
         </div>
